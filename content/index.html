@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/core.css">
+  <link rel="stylesheet" href="/assets/css/animation.css">
+  <link rel="stylesheet" href="/assets/css/containers.css">
+  <link rel="stylesheet" href="/assets/css/inputs.css">
+  <link rel="stylesheet" href="/assets/css/tooltip.css">
+  <link rel="stylesheet" href="/assets/css/results.css">
+  <link rel="stylesheet" href="/assets/css/buttons.css">
+  <link rel="stylesheet" href="/assets/css/text.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="template-outer-container">
+    <div class="bacc-calculator">
+      <div class="bacc-calculator__inner-container bacc-calculator__border">
+        <div class="bacc-calculator__heading mgb-20">
+          <h2 class="calc-heading text-upper mgb-10">Tax Loss Harvesting</h2>
+          <p class="calc-sub-heading">Work out how much you could earn from tax loss harvesting</p>
+        </div>
+        <div class="bacc-calculator__form pos-r">
+          <div class="two-input-row">
+            <div class="form-group">
+              <div class="label-container flex">
+                <label for="" class="calc-label">Initial Investment Value</label>
+                <div class="bacc-tooltip-container">
+                  <span class="bacc-tooltip-icon">?</span>
+                  <div class="bacc-tooltip-content ttc-sb bacc-tooltip-content__left">
+                    <span class="bacc-tooltip-close">x</span>
+                    <p class="bacc-tooltip-text">Please select the amount of hours you work from home each month?</p>
+                  </div>
+                </div>
+              </div>
+              <div class="input-container" data-error="">
+                <div class="currency-box" role="button">
+                  <span class="currency-box__content">$</span>
+                </div>
+                <input type="number" class="bacc-calc-input" id="initial-investment-input" value='20000' data-inputType="initial-investment" >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="label-container flex">
+                <label for="" class="calc-label">Current Investment Value</label>
+                <div class="bacc-tooltip-container">
+                  <span class="bacc-tooltip-icon">?</span>
+                  <div class="bacc-tooltip-content ttc-sb bacc-tooltip-content__left">
+                    <span class="bacc-tooltip-close">x</span>
+                    <p class="bacc-tooltip-text">Please select the amount of hours you work from home each month?</p>
+                  </div>
+                </div>
+              </div>
+              <div class="input-container" data-error="">
+                <div class="currency-box" role="button">
+                  <span class="currency-box__content">$</span>
+                </div>
+                <input type="number" class="bacc-calc-input" id="current-value" value='15000' data-inputType="current-value" >
+              </div>
+            </div>
+          </div>
+          <div class="two-input-row">
+            <div class="form-group">
+              <div class="label-container flex">
+                <label for="" class="calc-label">Current Tax Rate</label>
+                <div class="bacc-tooltip-container">
+                  <span class="bacc-tooltip-icon">?</span>
+                  <div class="bacc-tooltip-content bacc-tooltip-content__right">
+                    <span class="bacc-tooltip-close">x</span>
+                    <p class="bacc-tooltip-text">The tax rate you would fall under if you sold your investment now?</p>
+                  </div>
+                </div>
+              </div>
+              <div class="input-container" data-error="">
+                <div class="currency-box" role="button">
+                  <span class="currency-box__content">%</span>
+                </div>
+                <input type="number" class="bacc-calc-input" id="current-tax-rate" value='25' max="50"  data-inputType="current-tax-rate" >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="label-container flex">
+                <label for="" class="calc-label">Estimated Gain before final sale</label>
+                <div class="bacc-tooltip-container">
+                  <span class="bacc-tooltip-icon">?</span>
+                  <div class="bacc-tooltip-content bacc-tooltip-content__right">
+                    <span class="bacc-tooltip-close">x</span>
+                    <p class="bacc-tooltip-text">How much will your investment gain between now and the final sale of the investment?</p>
+                  </div>
+                </div>
+              </div>
+              <div class="input-container" data-error="">
+                <div class="currency-box" role="button">
+                  <span class="currency-box__content">%</span>
+                </div>
+                <input type="number" class="bacc-calc-input" id="estimated-gain" value='20' data-inputType="estimated-gain" >
+              </div>
+            </div>
+          </div>
+          <div class="two-input-row">
+            <div class="form-group">
+              <div class="label-container flex">
+                <label for="" class="calc-label">Estimated tax on Final Sale?</label>
+                <div class="bacc-tooltip-container">
+                  <span class="bacc-tooltip-icon">?</span>
+                  <div class="bacc-tooltip-content bacc-tooltip-content__right">
+                    <span class="bacc-tooltip-close">x</span>
+                    <p class="bacc-tooltip-text">What is the estimated tax rate on your investment likely to be at the final sale?</p>
+                  </div>
+                </div>
+              </div>
+              <div class="input-container" data-error="">
+                <div class="currency-box" role="button">
+                  <span class="currency-box__content">%</span>
+                </div>
+                <input type="number" class="bacc-calc-input" id="estimated-tax-rate" value='15' data-inputType="estimated-tax-rate">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bacc-results-container">
+          <div class="bacc-results-container__summary"></div>
+          <div class="tcalc-warning">
+            <p class="warning-content"><span class="fw-bold">Important!</span> This is only a reference point. Your total grant owed is variable depending on the information you submit. The HMRC offer further guidence on their <a href="https://www.gov.uk/guidance/work-out-your-turnover-so-you-can-claim-the-fifth-seiss-grant" target="_blank" rel="noopener noreferrer"class="blog-link">website</a>.</p>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <script src="/assets/src/tax-loss-error-handlers.js"></script>
+  <script src="/assets/src/tax-loss-calculations.js"></script>
+  <script src="/assets/src/tax-loss-state.js"></script>
+  <script src="/assets/src/tax-loss-ui.js"></script>
+  <script src="/assets/src/tax-loss-app.js"></script>
+</body>
+</html>

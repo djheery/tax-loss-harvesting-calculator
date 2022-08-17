@@ -1,0 +1,137 @@
+.input-error {
+  border-color : red !important;
+  position: relative
+}
+
+.select-container:focus-within {
+  border-color: #ba9f2a;
+}
+
+
+.select-container {
+  border: #000 1px solid;
+  padding: 0 10px;
+}
+
+select {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+}
+
+.bacc-select {
+  border: none;
+  width: 100%;
+  height: 35px;
+  font-size: 1rem;
+}
+
+.bacc-select:hover {
+  cursor: pointer;
+}
+
+.bacc-select:focus-within {
+  outline: none !important;
+}
+.input-error::after {
+  content: attr(data-error);
+  display: block;
+  color: red;
+  position: absolute;
+  bottom: -23px;
+  right: 0;
+  font-size: 0.8rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  line-height: 1.6rem;
+}
+
+.form-group label {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.two-input-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.label-container {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.two-input-row .form-group {
+  width: 100%
+}
+
+input {
+  width: 100%
+}
+
+.input-container {
+  display: flex;
+  border: 1px solid #333;
+  height: 37px;
+  padding: 0 20px 0 0px 
+}
+
+.input-container:focus-within {
+  border-color: #ba9f2a;
+}
+
+input:focus-within {
+  outline: none;
+}
+
+input {
+  padding: 12px 10px;
+  border:none;
+  font-size: .9rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.before-input-box {
+  width: 50px;
+  color: #BA992F;
+  font-weight: 600;
+  justify-self: center;
+  border-right: 1px solid #333;
+  height: 35px;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 700px) {
+
+  .two-input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .two-input-row .form-group {
+    width: 48%
+  }
+
+  input {
+    width: 100%
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  
+
+}
