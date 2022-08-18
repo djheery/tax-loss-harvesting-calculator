@@ -19,7 +19,7 @@ const TAX_LOSS_HARVESTING_UI = (() => {
       return DOMselectors;
     }, 
     showResults: (results, profit) => {
-      const accentClass = profit ? 'accent-clr' : 'warning';
+      const accentClass = profit ? 'accent-clr' : 'bacc-warning';
       const profitOrLoss = profit ? 'profit' : 'loss'
       const taxSavings = results.taxSavings;
       const newInvestmentAmt = results.TLHInvestmentAmt;
@@ -32,7 +32,7 @@ const TAX_LOSS_HARVESTING_UI = (() => {
       const net = results.netResult;
       DOMselectors.resultsSummary.innerHTML = '';
       DOMselectors.resultsSummary.innerHTML = `
-      <p>Below are some of the figures that indicate whether tax loss harvesting (<span class="fw-bold">TLH</span>) would prove beneficial based on the figures that you have provided:</p><br>
+      <p>Below are some of the figures that indicate whether tax loss harvesting (<span class="fw-bold">TLH</span>) would prove beneficial based on the figures that you have provided. According to the figures that you have entered you would make a <span class="${accentClass} fw-bold">net ${profitOrLoss}</span> if you were to utilize <span class="fw-bold">TLH</span>.</p><br>
       <p>Your tax savings <span class="fw-bold">with TLH</span> could be: <span class="accent-clr fw-bold">$${formatNumberWithCommas(taxSavings)}</span></p>
         <p>Your new investment amount <span class="fw-bold">with TLH</span> could be: <span class="accent-clr fw-bold">$${formatNumberWithCommas(newInvestmentAmt)}</span><p>
         <p>Your investment worth <span class="fw-bold">without TLH</span> would be: <span class="fw-bold accent-clr">$${formatNumberWithCommas(saleNoTLH)}</span></p>
@@ -41,32 +41,42 @@ const TAX_LOSS_HARVESTING_UI = (() => {
         <p>Your tax bill <span class="fw-bold">with TLH</span> would be: <span class="fw-bold accent-clr">$${formatNumberWithCommas(taxBillWithTLH)}</span></p>
         <p>Your return after tax <span class="fw-bold">without TLH</span> would be: <span class="fw-bold accent-clr">$${formatNumberWithCommas(returnNoTLH)}</span></p>
         <p>You return after tax <span class="fw-bold">with TLH</span> would be: <span class="fw-bold accent-clr">$${formatNumberWithCommas(returnWithTLH)}</span><p>
-        <p>Your <span class="fw-bold">net profit</span> after tax from using would be: <span class="fw-bold accent-clr">$${formatNumberWithCommas(net)}</span></span></p>
+        <p>Your <span class="fw-bold ${accentClass}">net ${profitOrLoss}</span> after tax using <span class="fw-bold">TLH</span> would be: <span class="fw-bold ${accentClass}">$${formatNumberWithCommas(Math.abs(net))}</span></span></p>
         <br>
-
       `;
+
+
     },
-    getMutableResultHTML: () => {
-      
-    },
-    cleanAllErrors: () => {
-      DOMselectors.inputs.forEach(i => {
-        if(i.parentElement.classList.contains('input-error'))
-          TAX_LOSS_HARVESTING_UI.removeInputError(i);
+    cleanAllErrors: (inputs) => {
+      inputs.forEach(i => {
+        i.parentElement.classList.remove('input-error');
+        console.log(i.parentElement.classList);
       });
     },
-    showInputError: (input) => {
-      input.parentElement.classList.add('input-error');
+    showInputErrors: (inputs) => {
+    
+      for(const i in inputs) {
+        const input = document.querySelector(`[data-inputType="${i}"]`);
+        input.parentElement.dataset.error = inputs[i];
+        input.parentElement.classList.add('input-error');
+      }
     },
     removeInputError: (input) => {
-      console.log(input.parentElement)
-      input.parentElement.classList.remove('input-error');
+      input.parentElement.classList.remove('input-error')
+    },
+    closeAllToolTips: () => {
+      DOMselectors.tooltips.forEach(tt => {
+        tt.nextElementSibling.classList.remove('bacc-tooltip-displayed')
+      })
     },
     displayToolTip: (e) => {
-
+      TAX_LOSS_HARVESTING_UI.closeAllToolTips();
+      if(!e.target.classList.contains('bacc-tooltip-icon')) return
+      e.target.nextElementSibling.classList.add('bacc-tooltip-displayed')
     },
     closeToolTip: (e) => {
-
+      if(!e.target.classList.contains('bacc-tooltip-close')) return;
+      if(e.target.classList.contains('bacc-tooltip-close')) e.target.parentElement.classList.remove('bacc-tooltip-displayed')
     }
   }
 })()

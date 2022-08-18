@@ -33,12 +33,14 @@ const TAX_LOSS_HARVESTING_CALCULATIONS = (() => {
   };
 
   const calcTaxBillNoTLH =  (initial, estimatedTax) => {
-    const taxNoTLH = (results.finalSaleNoTLHAmt - initial) * estimatedTax;
+    let taxNoTLH = (results.finalSaleNoTLHAmt - initial) * estimatedTax;
+    if(taxNoTLH < 0) taxNoTLH = 0;
     results.taxBillNoTLH = taxNoTLH;
   };
 
   const calcTaxBillWithTLH =  (estimatedTax) => {
-    const taxWithTLH = (results.finalSaleWithTLHAmt - results.TLHInvestmentAmt) * estimatedTax;
+    let taxWithTLH = (results.finalSaleWithTLHAmt - results.TLHInvestmentAmt) * estimatedTax;
+    if(taxWithTLH < 0) taxWithTLH = 0;
     results.taxBillWithTLH = taxWithTLH;
   };
 

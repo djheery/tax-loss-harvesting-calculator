@@ -21,15 +21,14 @@ const TAX_LOSS_HARVESTING_APP = (() => {
   }
 
   const startCalculations = (e) => {
-    ui.cleanAllErrors();
+    ui.cleanAllErrors(selectors.inputs);
     const input = e.target;
     const inputFor = getInputType(input);
-    const errorCheckType = getInputErrorCheckType(input);
     const inputValue = getInputValue(input);
-    const errors = errorHandler.checkForInputErrors(inputValue, errorCheckType);
-
-    if(errors !== null) {
-      handleInputErrors(input);
+    const errors = errorHandler.checkForInputErrors(selectors.inputs);
+    
+    if(Object.keys(errors).length > 0) {
+      handleInputErrors(errors);
       return;
     }
 
@@ -52,7 +51,7 @@ const TAX_LOSS_HARVESTING_APP = (() => {
 
   const getInputErrorCheckType = (input) => input.dataset.errorCheck;
 
-  const handleInputErrors = (input) => ui.showInputError(input);
+  const handleInputErrors = (inputs) => ui.showInputErrors(inputs);
   
   const formatPercentage = (number) => number / 100;
   

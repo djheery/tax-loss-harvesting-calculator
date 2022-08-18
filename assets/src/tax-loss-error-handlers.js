@@ -4,24 +4,28 @@ const TAX_LOSS_HARVESTING_ERROR_HANDLERS = (() => {
     percentageGreaterThan100: "Please enter a percentage less than 100"
   }
   
-  let errors = null;
+  let inputErrors = {};
   
-  const checkNumberWithinBound = (number) => {
+  const checkNumberWithinBound = (input, number) => {
     if(number < 0)
-      errors = errorWarnings.numberLessThanZero;
+      inputErrors[input] = errorWarnings.numberLessThanZero;
   }
 
-  const checkPercentage = (percent) => {
+  const checkPercentage = (input, percent) => {
     if(percent > 1) 
-      errors = errorWarnings.percentageGreaterThan100
+      inputErrors[input] = errorWarnings.percentageGreaterThan100
   }
   
   return {
-    checkForInputErrors: (inputValue, inputType) => {
-      checkNumberWithinBound(inputValue)
-      if(inputType === 'percentage') 
-        checkPercentage(inputValue);
-      return errors;
+    checkForInputErrors: (inputs) => {
+      inputErrors = [];
+      inputs.forEach(i => {
+        checkNumberWithinBound(i.dataset.inputtype, parseFloat(i.value));
+        if(i.dataset.errorCheck === 'percentage')
+          checkPercentage(i.dataset.inputtype, parseFloat(i.value / 100));
+      })
+
+      return inputErrors;
     } 
   }
 })();
