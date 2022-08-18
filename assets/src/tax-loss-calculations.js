@@ -66,6 +66,10 @@ const TAX_LOSS_HARVESTING_CALCULATIONS = (() => {
     return [initialInvestment, currentInvestmentValue, currentTaxRate, estimatedGain, estimatedTaxRate];
   }
 
+  const isTLHProfitable = () => {
+    return results.netResult > 0;
+  }
+
   return {
     performCalculations: (currentState) => {
       [initialInvestment, currentInvestmentValue, currentTaxRate, estimatedGain, estimatedTaxRate] = destructureCurrentState(currentState);
@@ -80,7 +84,7 @@ const TAX_LOSS_HARVESTING_CALCULATIONS = (() => {
       calcNetResult();
     },
     getResults: () => {
-      return results;
+      return [results, isTLHProfitable()];
     }
   }
 })()

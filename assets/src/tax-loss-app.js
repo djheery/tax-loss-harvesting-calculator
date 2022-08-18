@@ -16,39 +16,33 @@ const TAX_LOSS_HARVESTING_APP = (() => {
       state.updateCurrentState(getInputType(i), getInputValue(i));
     });
     calculator.performCalculations(state.getCurrentState());
-    console.log(calculator.getResults())
+    const [results, profit] = calculator.getResults();
+    ui.showResults(results, profit);
   }
 
   const startCalculations = (e) => {
-    // Clean all errors
     ui.cleanAllErrors();
-    // Set up local variables
     const input = e.target;
     const inputFor = getInputType(input);
     const errorCheckType = getInputErrorCheckType(input);
     const inputValue = getInputValue(input);
-    // Check for errors 
-    const errors = errorHandler.checkForInputErrors(inputValue, errorCheckType)
-    // Handle Errors if any 
+    const errors = errorHandler.checkForInputErrors(inputValue, errorCheckType);
+
     if(errors !== null) {
       handleInputErrors(input);
       return;
     }
-    // Update state to new values
+
     state.updateCurrentState(inputFor, inputValue);
-    // Pass state into calculator
     const currentState = state.getCurrentState(); 
     calculator.performCalculations(currentState);
-    // Get the final calculations
-    const calculationResults = calculator.getCalculationResults();
-    // Display Calculations 
-    ui.showResults(calculationResults);
+    const [results, profit] = calculator.getResults();
+    ui.showResults(results, profit);
   }
 
   const getInputType = (input) => input.dataset.inputtype;
 
   const getInputValue = (input) => {
-    console.log(getInputErrorCheckType(input));
     if(getInputErrorCheckType(input) === 'percentage') {
       return formatPercentage(parseFloat(input.value));
     } else {

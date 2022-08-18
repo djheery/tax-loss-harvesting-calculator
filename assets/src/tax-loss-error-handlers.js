@@ -12,7 +12,7 @@ const TAX_LOSS_HARVESTING_ERROR_HANDLERS = (() => {
   }
 
   const checkPercentage = (percent) => {
-    if(number > 100) 
+    if(percent > 1) 
       errors = errorWarnings.percentageGreaterThan100
   }
   
