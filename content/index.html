@@ -42,7 +42,7 @@
                 <div class="currency-box" role="button">
                   <span class="currency-box__content">$</span>
                 </div>
-                <input type="number" class="bacc-calc-input" id="initial-investment-input" value='20000' data-inputType="initial-investment" >
+                <input type="number" class="bacc-calc-input" id="initial-investment-input" value='20000' data-inputType="initial-investment" data-error-check="number">
               </div>
             </div>
             <div class="form-group">
@@ -60,7 +60,7 @@
                 <div class="currency-box" role="button">
                   <span class="currency-box__content">$</span>
                 </div>
-                <input type="number" class="bacc-calc-input" id="current-value" value='15000' data-inputType="current-value" >
+                <input type="number" class="bacc-calc-input" id="current-investment-value" value='15000' data-inputType="current-investment-value" data-error-check="number">
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
                 <div class="currency-box" role="button">
                   <span class="currency-box__content">%</span>
                 </div>
-                <input type="number" class="bacc-calc-input" id="current-tax-rate" value='25' max="50"  data-inputType="current-tax-rate" >
+                <input type="number" class="bacc-calc-input" id="current-tax-rate" value='25' max="50"  data-inputType="current-tax-rate" data-error-check="percentage">
               </div>
             </div>
             <div class="form-group">
@@ -98,7 +98,7 @@
                 <div class="currency-box" role="button">
                   <span class="currency-box__content">%</span>
                 </div>
-                <input type="number" class="bacc-calc-input" id="estimated-gain" value='20' data-inputType="estimated-gain" >
+                <input type="number" class="bacc-calc-input" id="estimated-gain" value='100' data-inputType="estimated-gain" data-error-check="percentage">
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@
                 <div class="currency-box" role="button">
                   <span class="currency-box__content">%</span>
                 </div>
-                <input type="number" class="bacc-calc-input" id="estimated-tax-rate" value='15' data-inputType="estimated-tax-rate">
+                <input type="number" class="bacc-calc-input" id="estimated-tax-rate" value='15' data-inputType="estimated-tax-rate" data-error-check="percentage">
               </div>
             </div>
           </div>
@@ -126,12 +126,13 @@
         <div class="bacc-results-container">
           <div class="bacc-results-container__summary"></div>
           <div class="tcalc-warning">
-            <p class="warning-content"><span class="fw-bold">Important!</span> This is only a reference point. Your total grant owed is variable depending on the information you submit. The HMRC offer further guidence on their <a href="https://www.gov.uk/guidance/work-out-your-turnover-so-you-can-claim-the-fifth-seiss-grant" target="_blank" rel="noopener noreferrer"class="blog-link">website</a>.</p>
+            <p class="warning-content"><span class="fw-bold">Important!</span> This is only a reference point. Your total capital gain owed variable depending on the actual price of your investments upon final sale. Seek guidance from a tax professional if you are still unsure about how to utilize tax loss harvesting to maximize on your investments.</p>
           </div>
         </div> 
       </div>
     </div>
   </div>
+  <script src="/assets/src/tax-loss-constants.js"></script>
   <script src="/assets/src/tax-loss-error-handlers.js"></script>
   <script src="/assets/src/tax-loss-calculations.js"></script>
   <script src="/assets/src/tax-loss-state.js"></script>

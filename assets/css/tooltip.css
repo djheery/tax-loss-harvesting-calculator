@@ -25,9 +25,10 @@
   height: fit-content;
   overflow: hidden;
   opacity: 0;
-  padding: 10px;
+  padding: 20px;
   font-size: .8rem;
   width: 250px;
+  min-height: 80px;
   background-color: #fff;
   left: -240px;
   z-index: -1;
@@ -50,14 +51,16 @@
 }
 
 .bacc-tooltip-close {
-  background-color: #191A18;
-  text-align: center;
+  /* background-color: #191A18; */
+  /* text-align: center; */
   width: 21px;
+  height: 21px;
   border-radius: 50%;
   position: absolute;
-  font-size: .8rem;
-  bottom: 8px;
-  color: #fff;
-  right: 10px;
+  font-size: 1rem;
+  bottom: 15px;
+  color: black;
+  font-weight: bold;
+  right: 5px;
   z-index: 100;
 }
